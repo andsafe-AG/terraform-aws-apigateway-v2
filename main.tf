@@ -324,7 +324,7 @@ resource "aws_apigatewayv2_stage" "this" {
   api_id = aws_apigatewayv2_api.this[0].id
 
   dynamic "access_log_settings" {
-    for_each = var.stage_access_log_settings != null ? [var.stage_access_log_settings] : []
+    for_each = var.stage_access_log_settings != {} && var.enable_logging ? [var.stage_access_log_settings] : []
 
     content {
       destination_arn = access_log_settings.value.create_log_group ? aws_cloudwatch_log_group.this["this"].arn : access_log_settings.value.destination_arn
