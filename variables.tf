@@ -307,6 +307,12 @@ variable "stage_access_log_settings" {
   default = {}
 }
 
+variable "enable_logging" {
+  description = "Wether to enable logging related resources"
+  type        = bool
+  default     = true
+}
+
 variable "stage_client_certificate_id" {
   description = "The identifier of a client certificate for the stage. Use the `aws_api_gateway_client_certificate` resource to configure a client certificate. Supported only for WebSocket APIs"
   type        = string
